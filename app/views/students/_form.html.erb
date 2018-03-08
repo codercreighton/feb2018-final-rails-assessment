@@ -1,0 +1,22 @@
+<%= form_with(model: student, local: true) do |form| %>
+  
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :student_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.text_field :age, id: :student_age %>
+  </div>
+
+  <div class="field">
+  
+    <%= form.hidden_field :teacher_id, value: @teacher.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
