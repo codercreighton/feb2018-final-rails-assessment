@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Teachers</h1>
-<h4>Click on a teacher's name to view class info and add a student</h4>
+<center><h1 class="title">Welcome to the Happy Kids Daycare</h1>
+<h4>Click on a teacher's name to view class info and add a student</h4></center>
+<div class="well">
 <table class="table">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Teacher Name</th>
       <th>Room number</th>
       <th>Age group</th>
       <th colspan="3"></th>
@@ -18,14 +19,18 @@
         <td><%= link_to teacher.name, teacher_path(id: teacher.id) %></td>
         <td><%= teacher.room_number %></td>
         <td><%= teacher.age_group %></td>
-        <td><%= link_to 'Show', teacher %></td>
-        <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
-        <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', teacher, class: 'btn btn-primary' %></td>
+       <% if can? :manage, teacher %> 
+        <td><%= link_to 'Edit', edit_teacher_path(teacher), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+       <% end %> 
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
+<% if can? :manage, Teacher %>
 <%= link_to 'Add New Teacher', new_teacher_path, class: 'btn btn-success' %>
+<% end %>

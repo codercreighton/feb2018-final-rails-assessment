@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<center><p>
   <h1>Welcome to <%= @teacher.name %>'s Class</h1>
 </p>
 
@@ -12,22 +12,25 @@
 <p>
   <strong>Age group:</strong>
   <%= @teacher.age_group %>
-</p>
+</p></center>
 
 
 <div class="well">
 	<h3><%= @teacher.name %>'s Student Roster</h3>
 	<% @teacher.students.each do |student|%>
-		<p><%= student.name %></p>
+		<p><b><%= student.name %></b> 
+			<% if can? :manage, @teacher %>
+		<em><%= link_to "Edit Student", edit_student_path(id: student.id) %></em><% end %></p>
 	<% end %>	
 </div>
 
 
 
+<% if can? :manage, @teacher %>
+	<h4>Add A New Student:</h4>
+	<%= render '/students/form', student: @student %>	
 
-<h4>Add A New Student:</h4>
-<%= render '/students/form', student: @student %>	
 
-
-<%= link_to 'Edit', edit_teacher_path(@teacher) %> |
+	<%= link_to 'Edit', edit_teacher_path(@teacher) %> 
+<% end %>
 <%= link_to 'Back', teachers_path %>

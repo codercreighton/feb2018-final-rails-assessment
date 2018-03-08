@@ -16,3 +16,26 @@
 
  @import 'bootstrap-sprockets';
  @import 'bootstrap';
+ @import url('https://fonts.googleapis.com/css?family=Rammetto+One');
+
+
+.well{
+	background: #fcf8e3;
+	text-align: center;
+}
+
+.table{
+	text-align: left;
+}
+
+.title{
+	font-family: 'Rammetto One', cursive;
+}
+
+img {
+	width: 600px;
+	height: auto;
+}
+.copy{
+	font-size: 15px;
+}

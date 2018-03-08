@@ -42,7 +42,7 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html { redirect_to teacher_path(id: @student.teacher_id), notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }

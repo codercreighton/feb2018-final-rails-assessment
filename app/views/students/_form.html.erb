@@ -13,7 +13,11 @@
 
   <div class="field">
   
-    <%= form.hidden_field :teacher_id, value: @teacher.id %>
+    <% if @teacher == nil %>
+      <%= form.hidden_field :teacher_id, value: @student.teacher_id %>
+    <% else %>
+      <%= form.hidden_field :teacher_id, value: @teacher.id %>
+    <% end %>
   </div>
 
   <div class="actions">
